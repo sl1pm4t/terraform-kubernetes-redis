@@ -41,22 +41,26 @@ EOF
 ## Cluster settings
 ##
 variable cluster_enabled {
-  default = true
+  description = "Set to 'false' to deploy a redis master only."
+  default     = true
 }
 
 variable cluster_slave_count {
-  default = 3
+  description = "The number of redis slave pods to deploy."
+  default     = 3
 }
 
 ##
 ## Metrics settings
 ##
 variable metrics_enabled {
-  default = true
+  description = "Should the Redis Prometheus metrics exporter pod be deployed?"
+  default     = true
 }
 
 variable metrics_port {
-  default = "9121"
+  description = "The port the metrics exporter will listen for scrape requests."
+  default     = "9121"
 }
 
 variable metrics_image_registry {
@@ -65,11 +69,13 @@ variable metrics_image_registry {
 }
 
 variable metrics_image_repository {
-  default = "oliver006/redis_exporter"
+  description = "The redis metrics exporter docker image that will be deployed."
+  default     = "oliver006/redis_exporter"
 }
 
 variable metrics_image_tag {
-  default = "v0.11"
+  description = "The redis metrics exporter docker tag / version that will be deployed."
+  default     = "v0.11"
 }
 
 variable metrics_image_pull_policy {
