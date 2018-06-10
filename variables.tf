@@ -1,3 +1,8 @@
+variable release_name {
+  description = "A user specified descriptor of this deployment"
+  default     = "redis"
+}
+
 variable redis_image_registry {
   description = "The docker image registry used to retrieve the redis image"
   default     = "docker.io"

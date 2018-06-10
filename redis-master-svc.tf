@@ -4,8 +4,9 @@ resource kubernetes_service redis_master {
     namespace = "${var.kubernetes_namespace}"
 
     labels {
-      app   = "${local.name}"
-      chart = "${local.chart}"
+      app     = "${local.name}"
+      chart   = "${local.chart}"
+      release = "${var.release_name}"
     }
 
     annotations = "${var.master_service_annotations}"

@@ -6,8 +6,9 @@ resource kubernetes_deployment redis_metrics {
     namespace = "${var.kubernetes_namespace}"
 
     labels {
-      app   = "${local.name}"
-      chart = "${local.chart}"
+      app     = "${local.name}"
+      chart   = "${local.chart}"
+      release = "${var.release_name}"
     }
   }
 
