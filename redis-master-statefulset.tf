@@ -62,7 +62,7 @@ resource kubernetes_stateful_set redis_master {
 
           env {
             name  = "ALLOW_EMPTY_PASSWORD"
-            value = "yes"
+            value = "${var.use_password ? "no" : "yes"}"
           }
 
           env {

@@ -10,14 +10,14 @@ resource kubernetes_secret redis {
   }
 
   data {
-    "redis-password" = "${coalesce(var.password, random_string.redis_password.result)}"
+    "redis-password" = "${trimspace(coalesce(var.password, join("", random_string.redis_password.*.result), " "))}"
   }
 
   type = "Opaque"
 }
 
 resource random_string redis_password {
-  count   = "${length(var.password) > 0 ? 0 : 1}"
+  count   = "${var.use_password ? 1 : 0}"
   special = false
   length  = 10
 }

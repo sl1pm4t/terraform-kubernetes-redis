@@ -16,13 +16,15 @@ This module requires an unofficial Kubernetes provider fork, available [here](ht
 
 ```hcl
 module redis {
-  source               = "git::https://github.com/sl1pm4t/terraform-kubernetes-redis"
+  source = "git::https://github.com/sl1pm4t/terraform-kubernetes-redis"
 
   kubernetes_namespace = "redis"
+
   master_resource_limits = {
     cpu    = "500m"
     memory = "2Gi"
   }
+  
   slave_replica_count  = 1
 }
 ```

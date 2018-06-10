@@ -84,7 +84,7 @@ resource kubernetes_deployment redis_slave {
 
           env {
             name  = "ALLOW_EMPTY_PASSWORD"
-            value = "yes"
+            value = "${var.use_password ? "no" : "yes"}"
           }
 
           env {
