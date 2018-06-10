@@ -48,7 +48,7 @@ variable cluster_enabled {
 
 variable cluster_slave_count {
   description = "The number of redis slave pods to deploy."
-  default     = 3
+  default     = 1
 }
 
 ##
