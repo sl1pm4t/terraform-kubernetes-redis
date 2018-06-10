@@ -5,8 +5,8 @@ locals {
   redis_image = "${format("%s/%s:%s", var.redis_image_registry, var.redis_image_repository, var.redis_image_tag)}"
 
   default_resource_requests = {
-    cpu    = "50m"
-    memory = "64Mi"
+    cpu    = "100m"
+    memory = "256Mi"
   }
 
   default_resource_limits = {
