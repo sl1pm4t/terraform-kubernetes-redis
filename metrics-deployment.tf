@@ -1,4 +1,6 @@
 resource kubernetes_deployment redis_metrics {
+  count = "${var.metrics_enabled ? 1 : 0}"
+
   metadata {
     name      = "${local.fullname}-metrics"
     namespace = "${var.kubernetes_namespace}"
