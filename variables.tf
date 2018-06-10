@@ -12,12 +12,8 @@ variable redis_image_tag {
 }
 
 variable redis_image_pull_policy {
-  default = "IfNotPresent"
-}
-
-variable redis_image_pull_secrets {
-  type    = "list"
-  default = []
+  description = "One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise."
+  default     = "IfNotPresent"
 }
 
 ##
@@ -79,7 +75,8 @@ variable metrics_image_tag {
 }
 
 variable metrics_image_pull_policy {
-  default = "IfNotPresent"
+  description = "One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise."
+  default     = "IfNotPresent"
 }
 
 variable metrics_image_pull_secrets {

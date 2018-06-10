@@ -30,8 +30,6 @@ resource kubernetes_deployment redis_slave {
       }
 
       spec {
-        image_pull_secrets = ["${var.redis_image_pull_secrets}"]
-
         node_selector = "${var.kubernetes_node_selector}"
 
         container {

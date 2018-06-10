@@ -28,8 +28,6 @@ resource kubernetes_stateful_set redis_master {
       }
 
       spec {
-        image_pull_secrets = ["${var.redis_image_pull_secrets}"]
-
         security_context {
           fs_group    = "${var.master_security_context["fs_group"]}"
           run_as_user = "${var.master_security_context["run_as_user"]}"

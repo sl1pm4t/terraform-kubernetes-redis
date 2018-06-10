@@ -33,8 +33,8 @@ module redis {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| cluster_enabled | # # Cluster settings # | string | `true` | no |
-| cluster_slave_count |  | string | `3` | no |
+| cluster_enabled | Set to 'false' to deploy a redis master only. | string | `true` | no |
+| cluster_slave_count | The number of redis slave pods to deploy. | string | `3` | no |
 | kubernetes_namespace | # # Kubernetes settings # | string | `default` | no |
 | kubernetes_node_selector |  | map | `<map>` | no |
 | master_args | Redis command arguments. Can be used to specify command line arguments, for example:<br><br>master_args = [  "redis-server",  "--maxmemory-policy volatile-ttl" ] | list | `<list>` | no |
@@ -57,19 +57,18 @@ module redis {
 | master_service_annotations |  | map | `<map>` | no |
 | master_service_loadbalancer_ip |  | string | `` | no |
 | master_service_type |  | string | `ClusterIP` | no |
-| metrics_enabled | # # Metrics settings # | string | `true` | no |
-| metrics_image_pull_policy |  | string | `IfNotPresent` | no |
+| metrics_enabled | Should the Redis Prometheus metrics exporter pod be deployed? | string | `true` | no |
+| metrics_image_pull_policy | One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. | string | `IfNotPresent` | no |
 | metrics_image_pull_secrets |  | list | `<list>` | no |
 | metrics_image_registry | The docker image registry used to retrieve the redis_exporter image | string | `docker.io` | no |
-| metrics_image_repository |  | string | `oliver006/redis_exporter` | no |
-| metrics_image_tag |  | string | `v0.11` | no |
+| metrics_image_repository | The redis metrics exporter docker image that will be deployed. | string | `oliver006/redis_exporter` | no |
+| metrics_image_tag | The redis metrics exporter docker tag / version that will be deployed. | string | `v0.11` | no |
 | metrics_pod_annotations |  | map | `<map>` | no |
-| metrics_port |  | string | `9121` | no |
+| metrics_port | The port the metrics exporter will listen for scrape requests. | string | `9121` | no |
 | metrics_resource_limits | Redis metrics resource limits ref: http://kubernetes.io/docs/user-guide/compute-resources/   metrics_resource_limits = {     memory = "256Mi"     cpu = "100m"   } | map | `<map>` | no |
 | metrics_resource_requests | Redis metrics resource requests ref: http://kubernetes.io/docs/user-guide/compute-resources/   metrics_resource_requests = {     memory = "256Mi"     cpu = "100m"   } | map | `<map>` | no |
 | password | Redis password (both master and slave) Defaults to a random 10-character alphanumeric string if not set and usePassword is true | string | `` | no |
-| redis_image_pull_policy |  | string | `IfNotPresent` | no |
-| redis_image_pull_secrets |  | list | `<list>` | no |
+| redis_image_pull_policy | One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. | string | `IfNotPresent` | no |
 | redis_image_registry | The docker image registry used to retrieve the redis image | string | `docker.io` | no |
 | redis_image_repository |  | string | `bitnami/redis` | no |
 | redis_image_tag |  | string | `4.0.9` | no |
